@@ -5,17 +5,17 @@ BioFigR service for the compositional analysis of shotgun metagenomic data using
 
 ## VM details
 
-CloudCIX (https://www.cloudcix.com/)
-Ubuntu Server 20.04 LTS
-20 vCPU
-60GB RAM
+- CloudCIX (https://www.cloudcix.com/)
+- Ubuntu Server 20.04 LTS
+- 20 vCPU
+- 60GB RAM
 
 ---
 
 ### Assumptions
 
 - Clean FASTQ data ready to use
-- Fresh VM, no prior Snapshot available
+- Fresh VM, no prior Snapshot
 
 ---
 
