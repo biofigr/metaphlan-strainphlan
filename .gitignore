@@ -1,0 +1,25 @@
+# === Sequencing data ===
+# FASTA / FASTQ (any case, any compression)
+*[Ff][Aa][Ss][Tt][Aa]*
+*[Ff][Aa][Ss][Tt][Qq]*
+
+# Alignment and binary formats
+*.sam
+*.bam
+*.bai
+*.cram
+*.crai
+
+# Variant and index files
+*.vcf
+*.bcf
+*.idx
+
+# Generic compressed archives
+*.gz
+*.bz2
+*.zip
+*.tar
+*.tgz
+*.xz
+
