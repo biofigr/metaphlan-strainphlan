@@ -1,4 +1,6 @@
-# MetaPhlAn & StrainPhlAn
+# ![biofigr/MetaPhlAn](site/assets/img/prof_logo_black-on-noBG.png)
+
+## MetaPhlAn & StrainPhlAn
 BioFigR service for the compositional analysis of shotgun metagenomic data using MetaPhlAn and StrainPhlAn.
 
 ---
@@ -159,6 +161,25 @@ bzip2 -c sample.samout > sample.samout.bz2
 
 sample2markers.py -i sample.samout.bz2 -o strain_out/ -d ~/metaphlan_db/
 
+mkdir sample_markers
+
+sample2markers.py -i */*sam.bz2 -o sample_markers -n 8 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl
+
 ```
 
+```bash
+awk -F'\t' '
+NR==1 {for(i=2;i<=NF;i++) hdr[i]=$i; next}
+$1 ~ /s__/ {
+  c=0;
+  for(i=2;i<=NF;i++) if(($i+0)>0) c++;
+  if(c>=4) printf("%s\t%d\n",$1,c);
+}
+' "merged_metaphlan_profile.tsv" | sort -k2,2nr | tee "species_overlap_n2.tsv"
 
+# This prints taxa from the merged MetaPhlAn4 output with >=4 species needed for the next StrainPhlAn4 step.
+```
+
+```bash
+strainphlan -s *.bz2 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl -c s__Porphyromonas_endodontalis --output_dir strainphlan_out
+```
