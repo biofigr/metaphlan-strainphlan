@@ -1,4 +1,4 @@
-# ![biofigr/MetaPhlAn](site/assets/img/prof_logo_black-on-noBG.png)
+### ![biofigr/MetaPhlAn](site/assets/img/prof_logo_black-on-noBG.png)
 
 ## MetaPhlAn & StrainPhlAn
 BioFigR service for the compositional analysis of shotgun metagenomic data using MetaPhlAn and StrainPhlAn.
