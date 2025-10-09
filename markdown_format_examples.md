@@ -10,6 +10,10 @@
 *Italic*
 ***Bold Italic***
 
+**Bold**<br>
+*Italic*<br>
+***Bold Italic***<br>
+
 - Bullet point
   - Sub-bullet needs two spaces
 * Asterisk bullet
@@ -79,13 +83,13 @@ files <- list.files("results", pattern = "*.tsv", full.names = TRUE)
 
 <details>
 <summary>Click to view workflow structure</summary>
-project/
-├── data/
-├── results/
-├── scripts/
-│ ├── run_metaphlan.sh
-│ ├── run_humann.sh
-└── README.md
+project/<br>
+├── data/<br>
+├── results/<br>
+├── scripts/<br>
+│ ├── run_metaphlan.sh<br>
+│ ├── run_humann.sh<br>
+└── README.md<br>
 </details>
 
 ---

@@ -1,9 +1,37 @@
 # ![biofigr/MetaPhlAn](site/assets/img/prof_logo_black-on-noBG_condensed.png)
 
-## Shotgun Metagenomics -- Marker-Based
+## Shotgun Metagenomics (Marker-Based)
 BioFigR service for the analysis of shotgun metagenomic data using MetaPhlAn4, HUMAnN3, and StrainPhlAn4.
 
 ---
+
+<p align="center">
+  <img src="docs/img/workflow.png" width="600" alt="Workflow"><br><br>
+
+  <!-- Specs -->
+  ![Input: Single- or Paired-end](https://img.shields.io/badge/Input-Single%20%2F%20Paired--end-blue)
+  ![Read length](https://img.shields.io/badge/Read%20length-50%2C%20100%2C%20150%20bp-lightgrey)
+  ![Depth](https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-blueviolet)
+  ![Platform](https://img.shields.io/badge/Platform-Illumina-success)<br>
+  
+  <!-- QC -->
+  ![FastQC](https://img.shields.io/badge/QC%20Report-FastQC-orange)
+  ![MultiQC](https://img.shields.io/badge/QC%20Report-MultiQC-orange)
+  ![fastp](https://img.shields.io/badge/Clean%20Reads-fastp-orange)
+  ![Kraken2](https://img.shields.io/badge/Remove%20Host-Kraken2-orange)
+  ![Clumpify.sh](https://img.shields.io/badge/Dedup-Clumpify.sh-orange)
+  ![Seqtk](https://img.shields.io/badge/Subset-Seqtk-orange)
+  ![Repair.sh](https://img.shields.io/badge/Repair-Repair.sh-orange)<br>
+
+  <!-- Tools -->
+  ![MetaPhlAn 4](https://img.shields.io/badge/Profiler-MetaPhlAn%204-yellowgreen)
+  ![HUMAnN 3](https://img.shields.io/badge/Profiler-MetaPhlAn%204-yellowgreen)
+  ![StrainPhlAn 4](https://img.shields.io/badge/Profiler-MetaPhlAn%204-yellowgreen)<br>
+</p>
+
+---
+
+## Introduction
 
 
 
