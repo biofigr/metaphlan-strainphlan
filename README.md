@@ -1,44 +1,58 @@
 # ![biofigr/MetaPhlAn](site/assets/img/prof_logo_black-on-noBG_condensed.png)
 
 ## Shotgun Metagenomics (Marker-Based)
-BioFigR service for the analysis of shotgun metagenomic data using MetaPhlAn4, HUMAnN3, and StrainPhlAn4.
+MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metagenomic profiling. MetaPhlAn identifies and quantifies microbial taxa directly from sequencing reads using unique clade-specific marker genes. HUMAnN builds on those results to profile functional potential—linking reads to metabolic pathways and gene families. StrainPhlAn refines the taxonomic picture further by reconstructing strain-level variation within species, enabling comparison across samples or subjects. Together, these methods deliver species- to strain-level insights in two-to-three weeks, ready for downstream statistical analysis.
 
 ---
 
-<p align="center">
-  <img src="docs/img/workflow.png" width="600" alt="Workflow"><br><br>
-
-## Input Requirements
-  <!-- Specs -->
-  ![Input: Single- or Paired-end](https://img.shields.io/badge/Input-Single%20%2F%20Paired--end-blueviolet)
-  ![Read length](https://img.shields.io/badge/Read%20length-50%2C%20100%2C%20or%20150%20bp-blueviolet)
-  ![Depth](https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-blueviolet)
-  ![Platform](https://img.shields.io/badge/Platform-Illumina-blueviolet)<br>
-  
-## QC
-  <!-- QC -->
-  ![FastQC](https://img.shields.io/badge/FastQC-Single%20sample%20QC-orange)
-  ![MultiQC](https://img.shields.io/badge/QC%20Report-MultiQC-orange)
-  ![fastp](https://img.shields.io/badge/Clean%20Reads-fastp-orange)
-  ![Kraken2](https://img.shields.io/badge/Remove%20Host-Kraken2-orange)
-  ![Clumpify.sh](https://img.shields.io/badge/Dedup-Clumpify.sh-orange)
-  ![Seqtk](https://img.shields.io/badge/Subset-Seqtk-orange)
-  ![Repair.sh](https://img.shields.io/badge/Repair-Repair.sh-orange)<br>
-
-## Tools
-  <!-- Tools -->
-  ![MetaPhlAn 4](https://img.shields.io/badge/Profiler-MetaPhlAn%204-yellowgreen)
-  ![HUMAnN 3](https://img.shields.io/badge/Profiler-HUMAnN%203-yellowgreen)
-  ![StrainPhlAn 4](https://img.shields.io/badge/Profiler-StrainPhlAn%204-yellowgreen)<br>
-</p>
+<table>
+  <tr>
+    <td style="width:50%; vertical-align:top;">
+      <img src="site/assets/img/workflow_pipeline.svg" alt="BioFigR pipeline" width="100%">
+    </td>
+    <td style="width:50%; vertical-align:top;">
+      <p><strong>Pipeline Tool(s)</strong></p>
+      <!-- Raw Reads (purple) -->
+      <img src="https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a">
+      <img src="https://img.shields.io/badge/Read%20Length-50%2C%20100%2C%20150bp-6a3d9a">
+      <img src="https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-6a3d9a">
+      <!-- QC (blue) -->
+      <img src="https://img.shields.io/badge/QC-FastQC-1f77b4">
+      <img src="https://img.shields.io/badge/QC-MultiQC-1f77b4">
+      <!-- Trim (light blue) -->
+      <img src="https://img.shields.io/badge/Trim-fastp-17becf">
+      <!-- Optional (green) -->
+      <img src="https://img.shields.io/badge/Repair-BBTools-2ca02c">
+      <!-- Rm Host (yellow) -->
+      <img src="https://img.shields.io/badge/Remove%20Host-Kraken2-ffdf00">
+      <!-- Rm Host (yellow) -->
+      <img src="https://img.shields.io/badge/Dedup-Clumpify-f39c12">
+      <!-- Profiling (red) -->
+      <img src="https://img.shields.io/badge/MetaPhlAn-4.x-d62728">
+      <img src="https://img.shields.io/badge/HUMAnN-3.x-d62728">
+      <img src="https://img.shields.io/badge/StrainPhlAn-4.x-d62728"><br><br>
+      <p><strong>Additional Service(s)</strong></p>
+      <!-- Repository (grey) -->
+      <img src="https://img.shields.io/badge/NCBI-SRA%20Upload-999999"><br><br>
+      <p><strong>Data Handling</strong></p>
+      <!-- Assurance -->
+      <img src="https://img.shields.io/badge/Client%20Interface-Dropbox-F8766D">
+      <img src="https://img.shields.io/badge/BioFigR-GDPR--Compliant-00BA38">
+      <img src="https://img.shields.io/badge/VM--HPC%20Environment-CloudCIX-619CFF"><br><br>
+      <p><strong>Sales Information</strong></p>
+      <!-- Sales Information -->
+      <img src="https://img.shields.io/badge/Price%20Per%20Sample-€%20POA-8dd3c7">
+      <img src="https://img.shields.io/badge/Turnaround-10--15%20Working%20Days-ffffb3">
+      <img src="https://img.shields.io/badge/Reproducibility-Conda-bebada">
+    </td>
+  </tr>
+</table>
 
 ---
+
 
 ## Introduction
 
-
-
----
 
 ### VM details
 
