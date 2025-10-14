@@ -8,6 +8,10 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
   <img src="site/assets/img/workflow_pipeline.svg" alt="banner" width="800">
 </p>
 
+![Input](https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a)
+![Read Length](https://img.shields.io/badge/Read%20Length-50%2C%20100%2C%20150bp-6a3d9a)
+![Depth](https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-6a3d9a)
+
 <p><strong>Pipeline Tool(s)</strong></p>
 <!-- Raw Reads (purple) -->
 <img src="https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Read%20Length-50%2C%20100%2C%20150bp-6a3d9a">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-6a3d9a">
