@@ -33,324 +33,124 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 ![NCBI](https://img.shields.io/badge/NCBI-SRA%20Upload-999999)
 
 ---
+## Deliverables
 
+All output files are generated automatically and provided in organized directories:
+<details><summary><span style="color:#3b82f6; font-weight:600;">Output Directory Structure</span></summary>
 
-## Introduction
-
-
-### VM details
-
-- CloudCIX (https://www.cloudcix.com/)
-- Ubuntu Server 20.04 LTS, 20 vCPU, 60GB RAM
-
-### Need to install conda for new VMs
-
-```bash
-cd ~
-
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && bash miniconda.sh -b -p $HOME/miniconda && rm miniconda.sh && eval "$($HOME/miniconda/bin/conda shell.bash hook)" && conda init
-
-conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
-
-source ~/.bashrc
-
-conda --version
-```
-
----
-
-## Create a Conda environment
-
-- Load the environment(s) from my YAML file in repo envs/
-
-```bash
-conda env create -f envs/sra_env.yaml
-
-conda env list
-
-conda activate sra
-```
-
-- Or create a new conda environment and install packages
-```bash
-conda create -n sra -c bioconda -c conda-forge sra-tools
-
-conda env list
-
-conda activate sra
-
-conda install -c bioconda entrez-direct
-
-fasterq-dump --version
-```
-
----
-
-### Download FASTQ files:
-
--- I have taken the SRA sample accession list from MetaPhlAn4.1 tutorial page:
-```bash
-cat > sra_ids.txt <<EOF
-SRS014476
-SRS014494
-SRS014459
-SRS014464
-SRS014470
-SRS014472
-EOF
-```
-
--- Fetch real SRR IDs from sample accession IDs:
-```bash
-cat sra_ids.txt | while read srs; do
-  esearch -db sra -query $srs | efetch -format runinfo | cut -d',' -f1 | grep SRR
-done > srr_ids.txt
-```
-
--- Output:
-```bash
-head srr_ids.txt
-SRR061436
-SRR061452
-```
-
--- SRA One:
-```bash
-prefetch SRR061436
-fasterq-dump --split-files -e 4 -t tmp -O fastq SRR061436
-```
-
--- SRA Two:
-```bash
-prefetch SRR061452
-fasterq-dump --split-files -e 4 -t tmp -O fastq SRR061452
-```
-
--- Check the files and compress:
-```bash
-for i in *.fastq; do grep -c '@' $i; done
-# Check some reads in files
-
-for i in *.fastq; do gzip $i; done
-# Compress to better represent starting FASTQ samples
-```
-
-```bash
-conda deactivate
-
-conda env export --name sra --no-builds > sra_env.yaml
-# Export the envronment
-
-head sra_env.yaml
-```
-
----
-
-## Install MetaPhlAn
-
-```bash
-conda create -y -n metaphlan -c conda-forge -c bioconda metaphlan=4.* bowtie2=2.*
-
-conda activate metaphlan
-```
-
-```bash
-nohup metaphlan --install --db_dir ~/metaphlan_db -x mpa_vOct22_CHOCOPhlAnSGB_202212 &
-```
-
----
-
-## Run MetaPhlAn
-
---- On current VM setup (20 vCPU and 60GB RAM), a metagenome sample with ~20M PE150 reads will reach 40-50% %MEM usage
---- If the %MEM usage hits 100%, the job will fail
---- Monitor a headless VM using the bash command "top"
-
-```bash
-# Remember to activate the environment:
-conda activate metaphlan
-
-mkdir metaphlan_out
-
-# Ensure FASTQ files are Gzip compressed (```bash for i in *.fastq; do gzip $i; done```)
-
-metaphlan ./fastq/SRR061436_1_100k.fastq.gz --input_type fastq --db_dir ~/metaphlan_db/ --mapout sample.mapout -o sample_profile.txt -s sample.samout
-
-# nohup bash -c "bash scripts/run_metaphlan.sh --samples samples.txt --outdir metaphlan_out --db_dir ~/metaphlan_db --index mpa_vOct22_CHOCOPhlAnSGB_202212 --threads 4" &
-
-merge_metaphlan_tables.py ./metaphlan_out/*/*.profile.tsv > ./metaphlan_out/merged_metaphlan_profile.tsv
-```
-
----
-
-## Run StrainPhlAn
-
-```bash
-bzip2 -k ~/metaphlan_db/mpa_vOct22_CHOCOPhlAnSGB_202212.fna
-
-nohup bash -c "bash scripts/cp_run_strainphlan.sh > strainphlan.log" &
-
-bzip2 -c sample.samout > sample.samout.bz2
-
-sample2markers.py -i sample.samout.bz2 -o strain_out/ -d ~/metaphlan_db/
-
-mkdir sample_markers
-
-sample2markers.py -i */*sam.bz2 -o sample_markers -n 8 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl
-
-```
-
-```bash
-awk -F'\t' '
-NR==1 {for(i=2;i<=NF;i++) hdr[i]=$i; next}
-$1 ~ /t__/ {
-  c=0;
-  for(i=2;i<=NF;i++) if(($i+0)>0) c++;
-  if(c>=4) printf("%s\t%d\n",$1,c);
-}
-' "merged_metaphlan_profile.tsv" | sort -k2,2nr | tee "species_overlap.tsv"
-
-# This prints taxa from the merged MetaPhlAn4 output with >=4 species needed for the next StrainPhlAn4 step.
-```
-
-```bash
-strainphlan -s *.bz2 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl -c s__Porphyromonas_endodontalis --output_dir strainphlan_out
-
-nohup strainphlan -s ./strainphlan_markers/*.bz2 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl -c s__Eschericia_coli --output_dir ./strainphlan_out &
-
-while read -r CLADE; do [[ -z "$CLADE" ]] && continue; strainphlan -s ./strainphlan_markers/*.bz2 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl -c $CLADE --output_dir ./strainphlan_out --non_interactive; done < clades_strainphlan.txt > log_strainphlan_clade.out
-
-```
-
-
-<p><strong>Sales Information</strong></p>
-
-![NCBI](https://img.shields.io/badge/Project%20Setup%20Charge-€%20POA-8dd3c7)
-![NCBI](https://img.shields.io/badge/Price%20Per%20Sample-€%20POA-8dd3c7)
-![NCBI](https://img.shields.io/badge/Turnaround-10--15%20Working%20Days-ffffb3)
-![NCBI](https://img.shields.io/badge/Reproducibility-Conda-bebada)
-
-
----
----
----
-
----
-
-## 📘 About BioFigR
-
-BioFigR provides advanced RNA-seq and metagenomic analysis pipelines with an emphasis on reproducibility, clarity, and visual interpretation.  
-Each workflow is fully scripted in base R and tested on Linux systems.
-
-**Website:** [https://biofigr.com](https://biofigr.com)  
-**Contact:** stephen@biofigr.com
-
----
-
-## Table of Contents
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-
----
-
-### 🔍 Key Features
-
-- ✅ Marker-based profiling (MetaPhlAn4, StrainPhlAn4)
-- ✅ Reproducible pipeline structure
-- ✅ Automatic resume and skip logic
-- ✅ Linux-native shell scripting (no external dependencies)
-
----
-
-| Tool | Method | Output Type | Notes |
-|------|---------|-------------|-------|
-| MetaPhlAn4 | Marker-based | Taxonomic profiles | Fast and specific |
-| StrainPhlAn4 | Marker-based | Strain trees | Requires MetaPhlAn markers |
-| HUMAnN3 | Hybrid | Functional pathways | Combines marker and reference mapping |
-
----
-
-```bash
-# Example: run MetaPhlAn4 with default database
-metaphlan sample.fastq.gz \
-  --input_type fastq \
-  --nproc 8 \
-  --output_file sample_profile.txt
-```
-
-```R
-# R example
-files <- list.files("results", pattern = "*.tsv", full.names = TRUE)
-```
-
-<details>
-<summary>Click to view workflow structure</summary>
+```text
 project/
-├── data/
+├── envs/
 ├── results/
+|  ├── metaphlan
+|  ├── humann
+|  ├── strainphlan
+|    ├── clade 1
+|    ├── clade 2
+|    ├── clade k
 ├── scripts/
-│ ├── run_metaphlan.sh
-│ ├── run_humann.sh
-└── README.md
+└── METHODS.txt
+```
 </details>
+<br>
+
+| Output File | Description | Format |
+|--------------|-------------|---------|
+| `merged_metaphlan4_profile.tsv` | Species-level relative abundances across samples | TSV |
+| `humann_genefamilies.tsv` | Gene family abundance table | TSV |
+| `humann_pathabundance.tsv` | Metabolic pathway abundance table | TSV |
+| `humann_pathcoverage.tsv` | Pathway coverage table | TSV |
+| `RAxML_bestTree.StrainPhlAn4.tre` | Phylogenetic tree of strain-level marker alignments | Newick |
+| `StrainPhlAn4_concatenated.aln` | Multiple sequence alignment of marker genes | FASTA |
+| `multiqc_report.html` | Aggregated QC summary | HTML |
+
+All files are delivered via secure download (Dropbox).  
+
+> <span style="color:#dc2626; font-weight:700;">⚠️ Warning:</span>  
+> This service provides **data processing and output generation only**.  
+> No biological or statistical interpretation is included in the standard deliverable.  
+> Optional add-ons such as result interpretation, figure preparation, or data upload to public repositories (e.g. NCBI SRA, ENA) are available on request.
 
 ---
+## Input Requirements
 
-![Build](https://img.shields.io/badge/build-passing-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)
+| Requirement | Specification |
+|--------------|----------------|
+| Input format | Paired- or single-end FASTQ (gzipped) |
+| Recommended read length | 100–150 bp |
+| Minimum read depth | ≥ 3 million reads per sample |
+| Accepted platforms | Illumina (NovaSeq, NextSeq, HiSeq) |
+| Optional preprocessing | Repair (BBTools) or host removal (BBSplit/Kraken2) |
 
-<!-- Assurance -->
-<img src="https://img.shields.io/badge/Client%20Interface-Dropbox-F8766D">&nbsp;&nbsp;<img src="https://img.shields.io/badge/BioFigR-GDPR--Compliant-00BA38">&nbsp;&nbsp;<img src="https://img.shields.io/badge/VM--HPC%20Environment-CloudCIX-619CFF"><br><br>
+Input files should be clearly named using sample identifiers (`sampleID_R1.fastq.gz`, `sampleID_R2.fastq.gz`).  
+Invalid or corrupt FASTQs will halt processing and trigger a report notification.
 
----
-
-> **Note**  
-> All example data and scripts in this repository are provided for demonstration.  
-> For commercial use or collaboration inquiries, please contact **stephen@biofigr.com**.
-
-_ _
-
-> **Warning**  
-> Running with `--nproc 1` will dramatically slow processing.
-
-_ _
-
-> **Tip**  
-> Use a dedicated conda environment to isolate dependencies.
-
-_ _
-
-> **Caution**  
-> Removing intermediate files will prevent resume functionality.
+> <span style="color:#2563eb; font-weight:600;">💡 Note:</span>  
+> To generate an accurate quotation and allocate sufficient storage, please specify the **number of samples** and the **approximate size of each FASTQ file**.  
+> This information is required to estimate total disk usage and compute resources prior to analysis.
 
 ---
+## QC & Processing
 
-### 📚 Citation
-
-If you use this workflow in your research, please cite:
-
-> BioFigR (2025). *Reproducible MetaPhlAn4 and StrainPhlAn4 Pipelines.*  
-> https://github.com/biofigr/metaphlan-strainphlan
-
----
-
-| Type    | Example | Symbol               |
-| ------- | ------- | -------------------- |
-| Info    | 🧠      | `:brain:`            |
-| Tip     | 💡      | `:bulb:`             |
-| Warning | ⚠️      | `:warning:`          |
-| Success | ✅      | `:white_check_mark:` |
-| File    | 📄      | `:page_facing_up:`   |
-| Folder  | 📁      | `:file_folder:`      |
-| Time    | ⏱️      | `:stopwatch:`        |
+1. **Initial QC** – Read quality evaluated using *FastQC* and summarised with *MultiQC*.  
+2. **Trimming** – Adapters and low-quality bases removed using *fastp*.  
+3. **Optional Repair** – Read pairing validated with *BBTools repair* (if required).  
+    - File integrity validation: *MD5 checksum*
+    - Read count comparison between R1 and R2: *seqtk stats*
+    - Sample identity checks: *mash sketch*
+    - Multi-lane concatenation: *cat*
+4. **Host Read Removal** – *Kraken2* used to remove contaminant or host reads when a host genome is supplied.  
+5. **Deduplication** – *Clumpify* reduces optical duplicates to improve downstream mapping.  
+6. **QC Reporting** – Comprehensive MultiQC summary provided.
+7. **Profiling** –  
+    - *MetaPhlAn4* for species-level taxonomic profiling  
+    - *HUMAnN3* for gene- and pathway-level functional profiling  
+    - *StrainPhlAn4* for within-species phylogenetic reconstruction (depth permitting)
 
 ---
+## Data Handling & Reproducibility
 
-© 2025 **BioFigR** — Reproducible pipelines for transparent bioinformatics.
+- **Dropbox** is used as it is OS-independent and user-friendly.
+- Data sharing via Dropbox may involve temporary storage on servers located **outside the European Economic Area (EEA)**.
+- **Secure File Transfer (SFTP)** is available as an alternative delivery method for clients who cannot use Dropbox.
+-  Access is restricted to whitelisted IP addresses, and temporary credentials are issued per project.
+-  Clients can connect using standard SFTP clients such as **FileZilla** or **WinSCP**.
+- All FASTQ processing is executed within a locked **Conda environment** (`env.yml`) ensuring version control.
+- Data are processed in EU-based cloud environments (CloudCIX; https://www.cloudcix.com/) with GDPR-compliant storage.
+
+> <span style="color:#dc2626; font-weight:700;">⚠️ Warning:</span>  
+> FASTQ data is retained for a maximum **30-days post-delivery** after project completion and then purged from all active storage.
 
 ---
+## Technical Details
 
+| Component | Tool / Version | Notes |
+|------------|----------------|-------|
+| QC | FastQC v0.12, MultiQC v1.15 | Read quality summaries |
+| Trimming | fastp v0.23 | Adapter and low-quality trimming |
+| Host removal | BBTools / Kraken2 | Optional; host genome or taxonomy database required |
+| Deduplication | Clumpify v39 | Duplicate read removal |
+| Taxonomic profiling | MetaPhlAn v4.x | Marker gene-based species profiling |
+| Functional profiling | HUMAnN v3.x | Gene family and pathway quantification |
+| Strain-level profiling | StrainPhlAn v4.x | Intra-species phylogenetic reconstruction |
+| Reporting | MultiQC v1.15 | Combined QC report |
 
+All runs use >8 vCPU with 60 GB RAM allocation per sample.
+
+---
+## Turnaround & Pricing
+
+| Metric | Typical | Notes |
+|--------|----------|-------|
+| Turnaround time | 10–15 working days | Queue dependent |
+| Sample volume | 1 to >100 samples | Scalable |
+| Admin fee | €400 | Initial project and data transfer setup |
+| Pricing | €60 | Per sample price for marker-based shotgun metagenomics |
+| Delivery | Dropbox link | Data retained 30 days |
+
+---
+## Contact
+
+For dataset specification or a quotation:  
+**Email:** [stephen.stockdale@biofigr.com](mailto:stephen.stockdale@biofigr.com)  
+**Website:** [https://www.biofigr.com](https://www.biofigr.com)
