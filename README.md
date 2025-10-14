@@ -4,12 +4,9 @@
 MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metagenomic profiling. MetaPhlAn identifies and quantifies microbial taxa directly from sequencing reads using unique clade-specific marker genes. HUMAnN builds on those results to profile functional potential—linking reads to metabolic pathways and gene families. StrainPhlAn refines the taxonomic picture further by reconstructing strain-level variation within species, enabling comparison across samples or subjects. Together, these methods deliver species- to strain-level insights in two-to-three weeks, ready for downstream statistical analysis.
 
 ---
-
-<table>
-  <tr>
-      <img src="site/assets/img/workflow_pipeline.svg" alt="BioFigR pipeline" width="100%">
-  </tr>
-</table>
+<p align="center">
+  <img src="site/assets/img/workflow_pipeline.svg" alt="banner" width="800">
+</p>
 
 <table>
   <tr>
