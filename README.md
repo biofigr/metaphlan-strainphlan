@@ -4,47 +4,34 @@
 MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metagenomic profiling. MetaPhlAn identifies and quantifies microbial taxa directly from sequencing reads using unique clade-specific marker genes. HUMAnN builds on those results to profile functional potential—linking reads to metabolic pathways and gene families. StrainPhlAn refines the taxonomic picture further by reconstructing strain-level variation within species, enabling comparison across samples or subjects. Together, these methods deliver species- to strain-level insights in two-to-three weeks, ready for downstream statistical analysis.
 
 ---
-<p align="center">
+<p align="left">
   <img src="site/assets/img/workflow_pipeline.svg" alt="banner" width="800">
 </p>
 
-<table>
-  <tr>
-      <p><strong>Pipeline Tool(s)</strong></p>
-      <!-- Raw Reads (purple) -->
-      <img src="https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a">
-      <img src="https://img.shields.io/badge/Read%20Length-50%2C%20100%2C%20150bp-6a3d9a">
-      <img src="https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-6a3d9a">
-      <!-- QC (blue) -->
-      <img src="https://img.shields.io/badge/QC-FastQC-1f77b4">
-      <img src="https://img.shields.io/badge/QC-MultiQC-1f77b4">
-      <!-- Trim (light blue) -->
-      <img src="https://img.shields.io/badge/Trim-fastp-17becf">
-      <!-- Optional (green) -->
-      <img src="https://img.shields.io/badge/Repair-BBTools-2ca02c">
-      <!-- Rm Host (yellow) -->
-      <img src="https://img.shields.io/badge/Remove%20Host-Kraken2-ffdf00">
-      <!-- Rm Host (yellow) -->
-      <img src="https://img.shields.io/badge/Dedup-Clumpify-f39c12">
-      <!-- Profiling (red) -->
-      <img src="https://img.shields.io/badge/MetaPhlAn-4.x-d62728">
-      <img src="https://img.shields.io/badge/HUMAnN-3.x-d62728">
-      <img src="https://img.shields.io/badge/StrainPhlAn-4.x-d62728"><br><br>
-      <p><strong>Additional Service(s)</strong></p>
-      <!-- Repository (grey) -->
-      <img src="https://img.shields.io/badge/NCBI-SRA%20Upload-999999"><br><br>
-      <p><strong>Data Handling</strong></p>
-      <!-- Assurance -->
-      <img src="https://img.shields.io/badge/Client%20Interface-Dropbox-F8766D">
-      <img src="https://img.shields.io/badge/BioFigR-GDPR--Compliant-00BA38">
-      <img src="https://img.shields.io/badge/VM--HPC%20Environment-CloudCIX-619CFF"><br><br>
-      <p><strong>Sales Information</strong></p>
-      <!-- Sales Information -->
-      <img src="https://img.shields.io/badge/Price%20Per%20Sample-€%20POA-8dd3c7">
-      <img src="https://img.shields.io/badge/Turnaround-10--15%20Working%20Days-ffffb3">
-      <img src="https://img.shields.io/badge/Reproducibility-Conda-bebada">
-  </tr>
-</table>
+<p><strong>Pipeline Tool(s)</strong></p>
+<!-- Raw Reads (purple) -->
+<img src="https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Read%20Length-50%2C%20100%2C%20150bp-6a3d9a">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-6a3d9a">
+<!-- QC (blue) -->
+<img src="https://img.shields.io/badge/QC-FastQC-1f77b4">&nbsp;&nbsp;<img src="https://img.shields.io/badge/QC-MultiQC-1f77b4">
+<!-- Trim (light blue) -->
+<img src="https://img.shields.io/badge/Trim-fastp-17becf">
+<!-- Optional (green) -->
+<img src="https://img.shields.io/badge/Repair-BBTools-2ca02c">
+<!-- Rm Host (yellow) -->
+<img src="https://img.shields.io/badge/Remove%20Host-Kraken2-ffdf00">
+<!-- Rm Host (yellow) -->
+<img src="https://img.shields.io/badge/Dedup-Clumpify-f39c12">
+<!-- Profiling (red) -->
+<img src="https://img.shields.io/badge/MetaPhlAn-4.x-d62728">&nbsp;&nbsp;<img src="https://img.shields.io/badge/HUMAnN-3.x-d62728">&nbsp;&nbsp;<img src="https://img.shields.io/badge/StrainPhlAn-4.x-d62728"><br><br>
+<p><strong>Additional Service(s)</strong></p>
+<!-- Repository (grey) -->
+<img src="https://img.shields.io/badge/NCBI-SRA%20Upload-999999"><br><br>
+<p><strong>Data Handling</strong></p>
+<!-- Assurance -->
+<img src="https://img.shields.io/badge/Client%20Interface-Dropbox-F8766D">&nbsp;&nbsp;<img src="https://img.shields.io/badge/BioFigR-GDPR--Compliant-00BA38">&nbsp;&nbsp;<img src="https://img.shields.io/badge/VM--HPC%20Environment-CloudCIX-619CFF"><br><br>
+<p><strong>Sales Information</strong></p>
+<!-- Sales Information -->
+<img src="https://img.shields.io/badge/Project%20Setup%20Charge-€%20POA-8dd3c7">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Price%20Per%20Sample-€%20POA-8dd3c7">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Turnaround-10--15%20Working%20Days-ffffb3">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Reproducibility-Conda-bebada">
 
 ---
 
