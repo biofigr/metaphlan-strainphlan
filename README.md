@@ -7,10 +7,12 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 
 <table>
   <tr>
-    <td style="width:50%; vertical-align:top;">
       <img src="site/assets/img/workflow_pipeline.svg" alt="BioFigR pipeline" width="100%">
-    </td>
-    <td style="width:50%; vertical-align:top;">
+  </tr>
+</table>
+
+<table>
+  <tr>
       <p><strong>Pipeline Tool(s)</strong></p>
       <!-- Raw Reads (purple) -->
       <img src="https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a">
@@ -44,7 +46,6 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
       <img src="https://img.shields.io/badge/Price%20Per%20Sample-€%20POA-8dd3c7">
       <img src="https://img.shields.io/badge/Turnaround-10--15%20Working%20Days-ffffb3">
       <img src="https://img.shields.io/badge/Reproducibility-Conda-bebada">
-    </td>
   </tr>
 </table>
 
@@ -219,18 +220,23 @@ sample2markers.py -i */*sam.bz2 -o sample_markers -n 8 -d ~/metaphlan_db/mpa_vJa
 ```bash
 awk -F'\t' '
 NR==1 {for(i=2;i<=NF;i++) hdr[i]=$i; next}
-$1 ~ /s__/ {
+$1 ~ /t__/ {
   c=0;
   for(i=2;i<=NF;i++) if(($i+0)>0) c++;
   if(c>=4) printf("%s\t%d\n",$1,c);
 }
-' "merged_metaphlan_profile.tsv" | sort -k2,2nr | tee "species_overlap_n2.tsv"
+' "merged_metaphlan_profile.tsv" | sort -k2,2nr | tee "species_overlap.tsv"
 
 # This prints taxa from the merged MetaPhlAn4 output with >=4 species needed for the next StrainPhlAn4 step.
 ```
 
 ```bash
 strainphlan -s *.bz2 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl -c s__Porphyromonas_endodontalis --output_dir strainphlan_out
+
+nohup strainphlan -s ./strainphlan_markers/*.bz2 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl -c s__Eschericia_coli --output_dir ./strainphlan_out &
+
+while read -r CLADE; do [[ -z "$CLADE" ]] && continue; strainphlan -s ./strainphlan_markers/*.bz2 -d ~/metaphlan_db/mpa_vJan25_CHOCOPhlAnSGB_202503.pkl -c $CLADE --output_dir ./strainphlan_out --non_interactive; done < clades_strainphlan.txt > log_strainphlan_clade.out
+
 ```
 
 
