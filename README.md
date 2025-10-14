@@ -32,6 +32,12 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 
 ![NCBI](https://img.shields.io/badge/NCBI-SRA%20Upload-999999)
 
+<p><strong>Maintenance</strong></p>
+
+![Version](https://img.shields.io/badge/Version-v1.0-93c5fd)
+![Updated](https://img.shields.io/badge/Last%20Updated-Oct%202025-c4b5fd)
+![Updated](https://img.shields.io/badge/Repreoducibility-Conda-a7f3d0)
+
 ---
 ## Deliverables
 
@@ -135,7 +141,7 @@ Invalid or corrupt FASTQs will halt processing and trigger a report notification
 | Strain-level profiling | StrainPhlAn v4.x | Intra-species phylogenetic reconstruction |
 | Reporting | MultiQC v1.15 | Combined QC report |
 
-All runs use >8 vCPU with 60 GB RAM allocation per sample.
+All runs use 8-16 threads with 60 GB RAM allocation per sample.
 
 ---
 ## Turnaround & Pricing
@@ -151,6 +157,8 @@ All runs use >8 vCPU with 60 GB RAM allocation per sample.
 ---
 ## Contact
 
-For dataset specification or a quotation:  
+> <span style="color:#3b82f6; font-weight:700;">📩 Ready to process your dataset?</span>  
+> Specify your project size to receive a quotation.  
+
 **Email:** [stephen.stockdale@biofigr.com](mailto:stephen.stockdale@biofigr.com)  
-**Website:** [https://www.biofigr.com](https://www.biofigr.com)
+**Website:** [https://www.biofigr.com/contact](https://www.biofigr.com/contact)
