@@ -7,35 +7,30 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 <p align="left">
   <img src="site/assets/img/workflow_pipeline.svg" alt="banner" width="800">
 </p>
+<p><strong>Sequencing Reads</strong></p>
 
 ![Input](https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a)
 ![Read Length](https://img.shields.io/badge/Read%20Length-50%2C%20100%2C%20150bp-6a3d9a)
 ![Depth](https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-6a3d9a)
 
-<p><strong>Pipeline Tool(s)</strong></p>
-<!-- Raw Reads (purple) -->
-<img src="https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Read%20Length-50%2C%20100%2C%20150bp-6a3d9a">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-6a3d9a">
-<!-- QC (blue) -->
-<img src="https://img.shields.io/badge/QC-FastQC-1f77b4">&nbsp;&nbsp;<img src="https://img.shields.io/badge/QC-MultiQC-1f77b4">
-<!-- Trim (light blue) -->
-<img src="https://img.shields.io/badge/Trim-fastp-17becf">
-<!-- Optional (green) -->
-<img src="https://img.shields.io/badge/Repair-BBTools-2ca02c">
-<!-- Rm Host (yellow) -->
-<img src="https://img.shields.io/badge/Remove%20Host-Kraken2-ffdf00">
-<!-- Rm Host (yellow) -->
-<img src="https://img.shields.io/badge/Dedup-Clumpify-f39c12">
-<!-- Profiling (red) -->
-<img src="https://img.shields.io/badge/MetaPhlAn-4.x-d62728">&nbsp;&nbsp;<img src="https://img.shields.io/badge/HUMAnN-3.x-d62728">&nbsp;&nbsp;<img src="https://img.shields.io/badge/StrainPhlAn-4.x-d62728"><br><br>
+<p><strong>Data QC</strong></p>
+
+![FastQC](https://img.shields.io/badge/QC-FastQC-1f77b4)
+![MultiQC](https://img.shields.io/badge/QC-MultiQC-1f77b4)
+![BBTools](https://img.shields.io/badge/Repair-BBTools-17becf)
+![fastp](https://img.shields.io/badge/Trim-fastp-2ca02c)
+![Kraken2](https://img.shields.io/badge/Remove%20Host-Kraken2-ffdf00)
+![Clumpify](https://img.shields.io/badge/Dedup-Clumpify-f39c12)
+
+<p><strong>Analysis</strong></p>
+
+![MetaPhlAn](https://img.shields.io/badge/MetaPhlAn-4.x-d62728)
+![HUMAnN](https://img.shields.io/badge/HUMAnN-3.x-d62728)
+![StrainPhlAn](https://img.shields.io/badge/StrainPhlAn-4.x-d62728)
+
 <p><strong>Additional Service(s)</strong></p>
-<!-- Repository (grey) -->
-<img src="https://img.shields.io/badge/NCBI-SRA%20Upload-999999"><br><br>
-<p><strong>Data Handling</strong></p>
-<!-- Assurance -->
-<img src="https://img.shields.io/badge/Client%20Interface-Dropbox-F8766D">&nbsp;&nbsp;<img src="https://img.shields.io/badge/BioFigR-GDPR--Compliant-00BA38">&nbsp;&nbsp;<img src="https://img.shields.io/badge/VM--HPC%20Environment-CloudCIX-619CFF"><br><br>
-<p><strong>Sales Information</strong></p>
-<!-- Sales Information -->
-<img src="https://img.shields.io/badge/Project%20Setup%20Charge-€%20POA-8dd3c7">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Price%20Per%20Sample-€%20POA-8dd3c7">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Turnaround-10--15%20Working%20Days-ffffb3">&nbsp;&nbsp;<img src="https://img.shields.io/badge/Reproducibility-Conda-bebada">
+
+![NCBI](https://img.shields.io/badge/NCBI-SRA%20Upload-999999)
 
 ---
 
@@ -228,6 +223,14 @@ while read -r CLADE; do [[ -z "$CLADE" ]] && continue; strainphlan -s ./strainph
 ```
 
 
+<p><strong>Sales Information</strong></p>
+
+![NCBI](https://img.shields.io/badge/Project%20Setup%20Charge-€%20POA-8dd3c7)
+![NCBI](https://img.shields.io/badge/Price%20Per%20Sample-€%20POA-8dd3c7)
+![NCBI](https://img.shields.io/badge/Turnaround-10--15%20Working%20Days-ffffb3)
+![NCBI](https://img.shields.io/badge/Reproducibility-Conda-bebada)
+
+
 ---
 ---
 ---
@@ -298,6 +301,9 @@ project/
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)
+
+<!-- Assurance -->
+<img src="https://img.shields.io/badge/Client%20Interface-Dropbox-F8766D">&nbsp;&nbsp;<img src="https://img.shields.io/badge/BioFigR-GDPR--Compliant-00BA38">&nbsp;&nbsp;<img src="https://img.shields.io/badge/VM--HPC%20Environment-CloudCIX-619CFF"><br><br>
 
 ---
 
