@@ -1,6 +1,8 @@
-<div align="center">
-  <img src="docs/assets/img/prof_logo_black-on-noBG_condensed.png" alt="biofigr/MetaPhlAn-StrainPhlAn" width="800">
-</div>
+
+<p align="center">
+
+![BioFigR MetaPhlAn–StrainPhlAn logo](docs/assets/img/prof_logo_black-on-noBG_condensed.png){: width="600px"}
+</p>
 
 ## Shotgun Metagenomics (Marker-Based) 
 MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metagenomic profiling. MetaPhlAn identifies and quantifies microbial taxa directly from sequencing reads using unique clade-specific marker genes. HUMAnN builds on those results to profile functional potential—linking reads to metabolic pathways and gene families. StrainPhlAn refines the taxonomic picture further by reconstructing strain-level variation within species, enabling comparison across samples or subjects. Together, these methods deliver species- to strain-level insights in two-to-three weeks, ready for downstream statistical analysis.
@@ -153,7 +155,9 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 - Each analysis run uses 8–16 CPU threads and 60 GB RAM, with dedicated disk space allocated per sample and for all intermediate files.
 
 ---
-<br>
-<img src="docs/assets/img/prof_logo_black-on-noBG_condensed.png" width="190">
+<p align="center">
+
+![BioFigR MetaPhlAn–StrainPhlAn logo](docs/assets/img/prof_logo_black-on-noBG_condensed.png){: width="190px"}
 
 ***Bio***informatics | ***Fig***ures | ***R*** Stats
+</p>
