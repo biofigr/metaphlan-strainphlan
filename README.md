@@ -157,12 +157,12 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 - Each analysis run uses 8–16 CPU threads and 60 GB RAM, with dedicated disk space allocated per sample and for all intermediate files.
 
 ---
-
+<br>
 <p align="left">
   <img
     src="docs/assets/img/prof_logo_black-on-noBG_condensed.png"
     alt="BioFigR MetaPhlAn–StrainPhlAn"
-    width="190">
+    width="220">
 </p>
 
-***Bio***informatics | ***Fig***ures | ***R*** Stats
+***Bio***informatics // ***Fig***ures // ***R*** Stats
