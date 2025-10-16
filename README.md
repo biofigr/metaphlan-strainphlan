@@ -1,7 +1,7 @@
 
 <p align="center">
 
-![BioFigR MetaPhlAn–StrainPhlAn logo](docs/assets/img/prof_logo_black-on-noBG_condensed.png){: width="800px"}
+![BioFigR MetaPhlAn–StrainPhlAn logo](docs/assets/img/prof_logo_black-on-noBG_condensed.png)
 </p>
 
 ## Shotgun Metagenomics (Marker-Based) 
@@ -155,5 +155,9 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 - Each analysis run uses 8–16 CPU threads and 60 GB RAM, with dedicated disk space allocated per sample and for all intermediate files.
 
 ---
-![BioFigR logo](docs/assets/img/prof_logo_black-on-noBG_condensed.png){: width="190px"}
-***Bio***informatics | ***Fig***ures | ***R*** Stats
+<p align="center">
+
+![BioFigR MetaPhlAn–StrainPhlAn logo](docs/assets/img/prof_logo_black-on-noBG_condensed.png)
+
+## ***Bio***informatics | ***Fig***ures | ***R*** Stats
+</p>
