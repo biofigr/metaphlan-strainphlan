@@ -1,7 +1,9 @@
 
 <p align="center">
-
-![BioFigR MetaPhlAn–StrainPhlAn logo](docs/assets/img/prof_logo_black-on-noBG_condensed.png){: width="600px"}
+  <img
+    src="docs/assets/img/prof_logo_black-on-noBG_condensed.png"
+    alt="BioFigR MetaPhlAn–StrainPhlAn"
+    width="600">
 </p>
 
 ## Shotgun Metagenomics (Marker-Based) 
@@ -9,7 +11,7 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 
 ---
 <p align="left">
-  <img src="site/assets/img/workflow_pipeline.svg" alt="banner" width="600">
+  <img src="docs/assets/img/workflow_pipeline.svg" alt="banner" width="600">
 </p>
 <p><strong>Sequencing Reads</strong></p>
 
@@ -155,9 +157,12 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 - Each analysis run uses 8–16 CPU threads and 60 GB RAM, with dedicated disk space allocated per sample and for all intermediate files.
 
 ---
-<p align="center">
 
-![BioFigR MetaPhlAn–StrainPhlAn logo](docs/assets/img/prof_logo_black-on-noBG_condensed.png){: width="190px"}
+<p align="left">
+  <img
+    src="docs/assets/img/prof_logo_black-on-noBG_condensed.png"
+    alt="BioFigR MetaPhlAn–StrainPhlAn"
+    width="190">
+</p>
 
 ***Bio***informatics | ***Fig***ures | ***R*** Stats
-</p>
