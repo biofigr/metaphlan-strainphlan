@@ -1,11 +1,13 @@
-# ![biofigr/MetaPhlAn](site/assets/img/prof_logo_black-on-noBG_condensed.png)
+<div align="center">
+  <img src="site/assets/img/prof_logo_black-on-noBG_condensed.png" alt="biofigr/MetaPhlAn-StrainPhlAn" width="800">
+</div>
 
-## Shotgun Metagenomics (Marker-Based)
+## Shotgun Metagenomics (Marker-Based) 
 MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metagenomic profiling. MetaPhlAn identifies and quantifies microbial taxa directly from sequencing reads using unique clade-specific marker genes. HUMAnN builds on those results to profile functional potential—linking reads to metabolic pathways and gene families. StrainPhlAn refines the taxonomic picture further by reconstructing strain-level variation within species, enabling comparison across samples or subjects. Together, these methods deliver species- to strain-level insights in two-to-three weeks, ready for downstream statistical analysis.
 
 ---
 <p align="left">
-  <img src="site/assets/img/workflow_pipeline.svg" alt="banner" width="800">
+  <img src="site/assets/img/workflow_pipeline.svg" alt="banner" width="600">
 </p>
 <p><strong>Sequencing Reads</strong></p>
 
@@ -31,34 +33,39 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 <p><strong>Additional Service(s)</strong></p>
 
 ![NCBI](https://img.shields.io/badge/NCBI-SRA%20Upload-999999)
+![NCBI](https://img.shields.io/badge/BioFigR-Figures-999999)
+![NCBI](https://img.shields.io/badge/BioFigR-Statistical%20Testing-999999)
 
 <p><strong>Maintenance</strong></p>
 
 ![Version](https://img.shields.io/badge/Version-v1.0-93c5fd)
 ![Updated](https://img.shields.io/badge/Last%20Updated-Oct%202025-c4b5fd)
-![Updated](https://img.shields.io/badge/Repreoducibility-Conda-a7f3d0)
+![Updated](https://img.shields.io/badge/Reproducibility-Conda-a7f3d0)
 
 ---
-## Deliverables
+## Getting Started 
 
-All output files are generated automatically and provided in organized directories:
-<details><summary><span style="color:#3b82f6; font-weight:600;">Output Directory Structure</span></summary>
+> <span style="color:#3b82f6; font-weight:700;">📩 Ready to process your dataset?</span>  
+> Specify your project size to receive a quotation.  
+> <br>
+> **Email:** [stephen.stockdale@biofigr.com](mailto:stephen.stockdale@biofigr.com)  
+> **Website:** [https://www.biofigr.com/contact](https://www.biofigr.com/contact)
 
-```text
-project/
-├── envs/
-├── results/
-|  ├── metaphlan
-|  ├── humann
-|  ├── strainphlan
-|    ├── clade 1
-|    ├── clade 2
-|    ├── clade k
-├── scripts/
-└── METHODS.txt
-```
-</details>
-<br>
+| Metric | Typical | Notes |
+|--------|----------|-------|
+| Turnaround Time | 2-3 weeks | Queue dependent |
+| Sample Volume | 1 to >100 samples | Scalable |
+| Admin Fee | € 600 | Project discussions and data transfer setup |
+| Per Sample | € 80 | Pricing for marker-based shotgun metagenomics |
+| NCBI SRA | € 400 | FASTQ FTP upload generating BioProject and SRA Accession IDs |
+| BioFigR Figures | € POA | Per sample for marker-based shotgun metagenomics |
+| Video Discussions | 3 sessions | Kick-off, Clade-selection (StrainPhlAn), and Wrap-up calls |
+| Delivery | Dropbox / Filezilla | Data retained 30 days |
+
+*Prices exclude VAT.
+
+---
+## Deliverables 
 
 | Output File | Description | Format |
 |--------------|-------------|---------|
@@ -70,33 +77,34 @@ project/
 | `StrainPhlAn4_concatenated.aln` | Multiple sequence alignment of marker genes | FASTA |
 | `multiqc_report.html` | Aggregated QC summary | HTML |
 
-All files are delivered via secure download (Dropbox).  
+- All files are delivered via secure download (Dropbox).  
 
-> <span style="color:#dc2626; font-weight:700;">⚠️ Warning:</span>  
-> This service provides **data processing and output generation only**.  
+> <span style="color:#2563eb; font-weight:600;">💡 Note:</span>  
+> This service provides **data processing and QC reports**.  
 > No biological or statistical interpretation is included in the standard deliverable.  
-> Optional add-ons such as result interpretation, figure preparation, or data upload to public repositories (e.g. NCBI SRA, ENA) are available on request.
+> Optional add-ons such as figure preparation, or data upload to public repositories, are available on request.
 
 ---
-## Input Requirements
+## Input Requirements 
 
 | Requirement | Specification |
 |--------------|----------------|
 | Input format | Paired- or single-end FASTQ (gzipped) |
-| Recommended read length | 100–150 bp |
+| Recommended read length | 50–150 bp |
 | Minimum read depth | ≥ 3 million reads per sample |
 | Accepted platforms | Illumina (NovaSeq, NextSeq, HiSeq) |
-| Optional preprocessing | Repair (BBTools) or host removal (BBSplit/Kraken2) |
+| Optional preprocessing | Repair (BBTools) or host removal (Kraken2) |
 
-Input files should be clearly named using sample identifiers (`sampleID_R1.fastq.gz`, `sampleID_R2.fastq.gz`).  
-Invalid or corrupt FASTQs will halt processing and trigger a report notification.
+- Input files should be clearly named using sample identifiers (`sampleID_R1.fastq.gz`, `sampleID_R2.fastq.gz`).  
+- Invalid or corrupt FASTQs will halt processing and trigger a report notification.  
+- Inclusion or re-analysis of public data (i.e., NCBI SRA/ENA) is supported following evaluation.
 
 > <span style="color:#2563eb; font-weight:600;">💡 Note:</span>  
 > To generate an accurate quotation and allocate sufficient storage, please specify the **number of samples** and the **approximate size of each FASTQ file**.  
 > This information is required to estimate total disk usage and compute resources prior to analysis.
 
 ---
-## QC & Processing
+## QC & Processing 
 
 1. **Initial QC** – Read quality evaluated using *FastQC* and summarised with *MultiQC*.  
 2. **Trimming** – Adapters and low-quality bases removed using *fastp*.  
@@ -114,7 +122,7 @@ Invalid or corrupt FASTQs will halt processing and trigger a report notification
     - *StrainPhlAn4* for within-species phylogenetic reconstruction (depth permitting)
 
 ---
-## Data Handling & Reproducibility
+## Data Handling & Reproducibility 
 
 - **Dropbox** is used as it is OS-independent and user-friendly.
 - Data sharing via Dropbox may involve temporary storage on servers located **outside the European Economic Area (EEA)**.
@@ -122,43 +130,30 @@ Invalid or corrupt FASTQs will halt processing and trigger a report notification
 -  Access is restricted to whitelisted IP addresses, and temporary credentials are issued per project.
 -  Clients can connect using standard SFTP clients such as **FileZilla** or **WinSCP**.
 - All FASTQ processing is executed within a locked **Conda environment** (`env.yml`) ensuring version control.
-- Data are processed in EU-based cloud environments (CloudCIX; https://www.cloudcix.com/) with GDPR-compliant storage.
+- Data are only processed in an Irish data centre with GDPR-compliant storage.
 
-> <span style="color:#dc2626; font-weight:700;">⚠️ Warning:</span>  
+> <span style="color:#2563eb; font-weight:600;">💡 Note:</span>  
 > FASTQ data is retained for a maximum **30-days post-delivery** after project completion and then purged from all active storage.
 
 ---
-## Technical Details
+## Technical Details 
 
 | Component | Tool / Version | Notes |
 |------------|----------------|-------|
 | QC | FastQC v0.12, MultiQC v1.15 | Read quality summaries |
+| Reporting | MultiQC v1.15 | Combined QC report |
 | Trimming | fastp v0.23 | Adapter and low-quality trimming |
-| Host removal | BBTools / Kraken2 | Optional; host genome or taxonomy database required |
+| Host removal | Kraken2 | Optional; host genome or taxonomy database required |
 | Deduplication | Clumpify v39 | Duplicate read removal |
 | Taxonomic profiling | MetaPhlAn v4.x | Marker gene-based species profiling |
 | Functional profiling | HUMAnN v3.x | Gene family and pathway quantification |
 | Strain-level profiling | StrainPhlAn v4.x | Intra-species phylogenetic reconstruction |
-| Reporting | MultiQC v1.15 | Combined QC report |
 
-All runs use 8-16 threads with 60 GB RAM allocation per sample.
-
----
-## Turnaround & Pricing
-
-| Metric | Typical | Notes |
-|--------|----------|-------|
-| Turnaround time | 10–15 working days | Queue dependent |
-| Sample volume | 1 to >100 samples | Scalable |
-| Admin fee | €400 | Initial project and data transfer setup |
-| Pricing | €60 | Per sample price for marker-based shotgun metagenomics |
-| Delivery | Dropbox link | Data retained 30 days |
+- Virtual Machine (VM) or High-Performance Computing (HPC) resources are provided by: **CloudCIX** [https://www.cloudcix.com/](https://www.cloudcix.com/)
+- Each analysis run uses 8–16 CPU threads and 60 GB RAM, with dedicated disk space allocated per sample and for all intermediate files.
 
 ---
-## Contact
+<br>
+<img src="site/assets/img/prof_logo_black-on-noBG_condensed.png" width="190">
 
-> <span style="color:#3b82f6; font-weight:700;">📩 Ready to process your dataset?</span>  
-> Specify your project size to receive a quotation.  
-
-**Email:** [stephen.stockdale@biofigr.com](mailto:stephen.stockdale@biofigr.com)  
-**Website:** [https://www.biofigr.com/contact](https://www.biofigr.com/contact)
+***Bio***informatics | ***Fig***ures | ***R*** Stats
