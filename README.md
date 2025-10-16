@@ -11,7 +11,7 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 
 ---
 <p align="left">
-  <img src="docs/assets/img/workflow_pipeline.svg" alt="banner" width="600">
+  <img src="docs/assets/img/workflow_pipeline.png" alt="banner" width="600">
 </p>
 <p><strong>Sequencing Reads</strong></p>
 
