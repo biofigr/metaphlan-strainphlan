@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="site/assets/img/prof_logo_black-on-noBG_condensed.png" alt="biofigr/MetaPhlAn-StrainPhlAn" width="800">
+  <img src="docs/assets/img/prof_logo_black-on-noBG_condensed.png" alt="biofigr/MetaPhlAn-StrainPhlAn" width="800">
 </div>
 
 ## Shotgun Metagenomics (Marker-Based) 
@@ -154,6 +154,6 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 
 ---
 <br>
-<img src="site/assets/img/prof_logo_black-on-noBG_condensed.png" width="190">
+<img src="docs/assets/img/prof_logo_black-on-noBG_condensed.png" width="190">
 
 ***Bio***informatics | ***Fig***ures | ***R*** Stats
