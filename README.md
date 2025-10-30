@@ -1,8 +1,8 @@
 
 <p align="center">
   <img
-    src="docs/assets/img/prof_logo_black-on-noBG_condensed.png"
-    alt="BioFigR MetaPhlAn–StrainPhlAn"
+    src="docs/img/prof_logo_grey_noBG_condensed.png"
+    alt="BioFigR logo"
     width="600">
 </p>
 
@@ -11,13 +11,13 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 
 ---
 <p align="left">
-  <img src="docs/assets/img/workflow_pipeline.png" alt="banner" width="600">
+  <img src="docs/img/workflow_pipeline.png" alt="banner" width="600">
 </p>
 <p><strong>Sequencing Reads</strong></p>
 
 ![Input](https://img.shields.io/badge/Input-Single%20or%20Paired--end-6a3d9a)
 ![Read Length](https://img.shields.io/badge/Read%20Length-50%2C%20100%2C%20150bp-6a3d9a)
-![Depth](https://img.shields.io/badge/Depth-%E2%89%A53M%20reads-6a3d9a)
+![Depth](https://img.shields.io/badge/Depth-%E2%89%A52M%20reads-6a3d9a)
 
 <p><strong>Data QC</strong></p>
 
@@ -30,43 +30,31 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 
 <p><strong>Analysis</strong></p>
 
-![MetaPhlAn](https://img.shields.io/badge/MetaPhlAn-4.x-d62728)
-![HUMAnN](https://img.shields.io/badge/HUMAnN-3.x-d62728)
-![StrainPhlAn](https://img.shields.io/badge/StrainPhlAn-4.x-d62728)
+![MetaPhlAn](https://img.shields.io/badge/MetaPhlAn-4.2.2-d62728)
+![HUMAnN](https://img.shields.io/badge/HUMAnN-3.9-d62728)
+![StrainPhlAn](https://img.shields.io/badge/StrainPhlAn-4.2.2-d62728)
 
 <p><strong>Additional Service(s)</strong></p>
 
 ![NCBI](https://img.shields.io/badge/NCBI-SRA%20Upload-999999)
-![NCBI](https://img.shields.io/badge/BioFigR-Figures-999999)
-![NCBI](https://img.shields.io/badge/BioFigR-Statistical%20Testing-999999)
+![BioFigR](https://img.shields.io/badge/BioFigR-Figures%20and%20Statistical%20Testing-999999)
 
 <p><strong>Maintenance</strong></p>
 
 ![Version](https://img.shields.io/badge/Version-v1.0-93c5fd)
 ![Updated](https://img.shields.io/badge/Last%20Updated-Oct%202025-c4b5fd)
-![Updated](https://img.shields.io/badge/Reproducibility-Conda-a7f3d0)
+![Reproduction](https://img.shields.io/badge/Reproducibility-Conda-a7f3d0)
 
 ---
 ## Getting Started 
 
 > <span style="color:#3b82f6; font-weight:700;">📩 Ready to process your dataset?</span>  
-> Specify your project size to receive a quotation.  
+> BioFigR offers bioinformatics, data visualization, and statistical analysis as professional services.  
+> To get started, specify your project size to receive a quotation.  
 > <br>
 > **Email:** [stephen.stockdale@biofigr.com](mailto:stephen.stockdale@biofigr.com)  
 > **Website:** [https://www.biofigr.com/contact](https://www.biofigr.com/contact)
 
-| Metric | Typical | Notes |
-|--------|----------|-------|
-| Turnaround Time | 2-3 weeks | Queue dependent |
-| Sample Volume | 1 to >100 samples | Scalable |
-| Admin Fee | € 600 | Project discussions and data transfer setup |
-| Per Sample | € 80 | Pricing for marker-based shotgun metagenomics |
-| NCBI SRA | € 400 | FASTQ FTP upload generating BioProject and SRA Accession IDs |
-| BioFigR Figures | € POA | Per sample for marker-based shotgun metagenomics |
-| Video Discussions | 3 sessions | Kick-off, Clade-selection (StrainPhlAn), and Wrap-up calls |
-| Delivery | Dropbox / Filezilla | Data retained 30 days |
-
-*Prices exclude VAT.
 
 ---
 ## Deliverables 
@@ -95,8 +83,10 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 |--------------|----------------|
 | Input format | Paired- or single-end FASTQ (gzipped) |
 | Recommended read length | 50–150 bp |
-| Minimum read depth | ≥ 3 million reads per sample |
-| Accepted platforms | Illumina (NovaSeq, NextSeq, HiSeq) |
+| Functional profiling | Illumina, MGI, Element Biosciences, Ultima Genomics |
+| Taxonomic profiling | ≥ 2 million reads per sample |
+| Functional profiling | ≥ 5 million reads per sample |
+| Functional profiling | ≥ 10 million reads per sample |
 | Optional preprocessing | Repair (BBTools) or host removal (Kraken2) |
 
 - Input files should be clearly named using sample identifiers (`sampleID_R1.fastq.gz`, `sampleID_R2.fastq.gz`).  
@@ -121,7 +111,7 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 5. **Deduplication** – *Clumpify* reduces optical duplicates to improve downstream mapping.  
 6. **QC Reporting** – Comprehensive MultiQC summary provided.
 7. **Profiling** –  
-    - *MetaPhlAn4* for species-level taxonomic profiling  
+    - *MetaPhlAn4* for phylum-to-species-level taxonomic profiling  
     - *HUMAnN3* for gene- and pathway-level functional profiling  
     - *StrainPhlAn4* for within-species phylogenetic reconstruction (depth permitting)
 
@@ -144,25 +134,24 @@ MetaPhlAn, HUMAnN, and StrainPhlAn form a complementary suite for shotgun metage
 
 | Component | Tool / Version | Notes |
 |------------|----------------|-------|
-| QC | FastQC v0.12, MultiQC v1.15 | Read quality summaries |
-| Reporting | MultiQC v1.15 | Combined QC report |
+| QC | FastQC v0.12 | Read quality summaries |
+| Reporting | MultiQC v1.31 | Combined QC report |
 | Trimming | fastp v0.23 | Adapter and low-quality trimming |
-| Host removal | Kraken2 | Optional; host genome or taxonomy database required |
-| Deduplication | Clumpify v39 | Duplicate read removal |
-| Taxonomic profiling | MetaPhlAn v4.x | Marker gene-based species profiling |
-| Functional profiling | HUMAnN v3.x | Gene family and pathway quantification |
-| Strain-level profiling | StrainPhlAn v4.x | Intra-species phylogenetic reconstruction |
+| Host removal | Kraken2 v2.0.8 | Optional; host genome or taxonomy database required |
+| Deduplication | Clumpify v39.33 | Duplicate read removal |
+| Taxonomic profiling | MetaPhlAn v4.2.2 | Marker gene-based species profiling |
+| Functional profiling | HUMAnN v3.9 | Gene family and pathway quantification |
+| Strain-level profiling | StrainPhlAn v4.2.2 | Intra-species phylogenetic reconstruction |
 
 - Virtual Machine (VM) or High-Performance Computing (HPC) resources are provided by: **CloudCIX** [https://www.cloudcix.com/](https://www.cloudcix.com/)
-- Each analysis run uses 8–16 CPU threads and 60 GB RAM, with dedicated disk space allocated per sample and for all intermediate files.
+- Each analysis run uses 8–16 CPU threads and 40-60 GB RAM, with dedicated disk space allocated per sample and for all intermediate files.
 
 ---
 <br>
 <p align="left">
   <img
-    src="docs/assets/img/prof_logo_black-on-noBG_condensed.png"
-    alt="BioFigR MetaPhlAn–StrainPhlAn"
-    width="220">
+    src="docs/img/prof_logo_grey_noBG_condensed_tagline.png"
+    alt="BioFigR logo with tagline"
+    width="400">
 </p>
 
-***Bio***informatics // ***Fig***ures // ***R*** Stats
